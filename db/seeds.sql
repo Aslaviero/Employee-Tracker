@@ -5,9 +5,9 @@ VALUES
 ('Operations'),
 ('Finance');
 
-INSERT INTO role (title, salary, deparment_id)
+INSERT INTO roles (title, salary, deparment_id)
 VALUES
-('Operations Supervisor', 95000, 3 ),
+('Operations Supervisor', 95000, 3),
 ('Accountant', 90000, 4),
 ('Head of Marketing', 100000, 1),
 ('Frontend Engineer', 150000, 5),
