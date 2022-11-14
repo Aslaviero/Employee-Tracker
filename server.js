@@ -1,7 +1,6 @@
 // Dependencies
 const express = require('express');
 const mysql = require('mysql2');
-const db = require('./db/connection')
 const inquirer = require('inquirer');
 const cTable = require('./node_modules/console.table');
 
@@ -13,20 +12,31 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.use((req, res) => {
- res.status(404).end();
-});
-
-db.connect(function(err) {
-  if (err) {
-    return console.error('error: ' + err.message);
-  }
-  console.log('Connected to the employeeTracker database.');
-});
+//connect to database
+const db = mysql.createConnection(
+  {
+    host: '127.0.0.1',
+    // Your MySQL username,
+    user: 'root',
+    // Your MySQL password
+    password: 'root',
+    database: 'employeeTracker'
+  },
+  console.log(`You're now connected to employee tracker db`)
+);
   
+// Establishing Connection to database
+db.connect((err) => {
+  if (err) throw err;
+
+  // Start main menu function
+
+  console.log("\n WELCOME TO EMPLOYEE TRACKER \n");
+  mainMenu();
+});
 
 //Main menu that you first see when doing node server.js
-function mainMenuPrompt() {
+function mainMenu() {
   inquirer.prompt([
     {
       type: 'list',
@@ -168,8 +178,28 @@ function viewAllDepartments() {
 
 // add Dempartment
 function addDempartment() {
-
-}
+  inquirer.prompt([
+    {
+      type: 'input',
+      name: 'title',
+      message: 'Create new Department'
+    },
+    {
+      type: 'number',
+      name: 'salary',
+      message: 'Enter the salary amount for the new department'
+    },
+    {
+      type: 'number',
+      name: 'department_id',
+      message: 'Enter department id for new department'
+    }
+  ]).then((result, err) => {
+    db.query('INSERT INTO departments (title, salary, deparment_id) VALUES (?, ?, ?)',[result.title, result.salary, result.department_id])
+    if(err) throw err;
+    console.table(result);
+  });
+};
 
 // Delete Employee
 function deleteEmployee() {
@@ -190,3 +220,12 @@ function deleteDempartment() {
 function quit() {
 
 }
+
+// Default response for any other request (Not Found)
+app.use((req, res) => {
+  res.status(404).end();
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
