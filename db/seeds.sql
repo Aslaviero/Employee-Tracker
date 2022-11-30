@@ -5,7 +5,7 @@ VALUES
 ('Operations'),
 ('Finance');
 
-INSERT INTO roles (title, salary, deparment_id)
+INSERT INTO roles (title, salary, department_id)
 VALUES
 ('Operations Supervisor', 95000, 3),
 ('Accountant', 90000, 4),
@@ -17,13 +17,14 @@ VALUES
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES
-('Steve', 'Rogers', 3, 3),
-('Luke', 'Skywalker', 5, Null),
-('Tony', 'Stark', 3, 3),
+('Steve', 'Rogers', 3, 5),
+('Luke', 'Skywalker', 5, 2),
+('Tony', 'Stark', 3, 1),
 ('Jamie', 'Lanister', 1, Null),
-('Elliot', 'Porter', 5, 5),
-('Nick', 'Fury', 2, Null),
-('Bruce', 'Banner', 4,4);
+('Elliot', 'Porter', 5, 4),
+('Nick', 'Fury', 2, 1),
+('Bruce', 'Banner', 4, 3)
+('Darth', 'Vader', 1, Null);
 
 
 
