@@ -2,7 +2,7 @@
 const express = require('express');
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
-const cTable = require('console.table');
+
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -33,7 +33,7 @@ db.connect(err => {
 
   
 
-//Main menu that you first see when doing node server.js
+//Main menu that you first see when start up the program
 function startPrompt() {
   inquirer.prompt(
     {
@@ -82,38 +82,29 @@ function startPrompt() {
 
 // View All Employees
  viewAllEmployees = () => {
-  db.connect(function (err) {
-    if (err) throw err;
-    db.query("SELECT * FROM employee", function (err, result) {
+    db.query("SELECT * FROM employee", (err, result) => {
       if (err) throw err;
       console.table(result);
       startPrompt();
     });
-  });
 };
 
 // view All Roles
 function viewAllRoles() {
-  db.connect(function (err) {
-    if (err) throw err;
-    db.query("SELECT * FROM roles", function (err, result) {
+    db.query("SELECT * FROM roles", (err, result) => {
       if (err) throw err;
       console.table(result);
       startPrompt();
     });
-  });
-};
+  };
 
 // view All Departments
 function viewAllDepartments() {
-  db.connect(function (err) {
-    if (err) throw err;
-    db.query("SELECT * FROM department", function (err, result) {
+    db.query("SELECT * FROM department",  (err, result) => {
       if (err) throw err;
       console.table(result);
       startPrompt();
     });
-  });
 };
   
 
@@ -141,9 +132,10 @@ function addEmployee() {
       message: 'Enter ID of new employees manager'
     }
   ]).then((result, err) => {
-    db.query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)', [result.first_name, result.last_name, result.role_id, result.manager_id] + `SELECT * FROM employee`)
+    db.query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)', [result.first_name, result.last_name, result.role_id, result.manager_id])
     if (err) throw err;
-    console.table(result);
+    console.log('New Employee Added!');
+    startPrompt();
   })
 };
 
@@ -166,10 +158,11 @@ function addRole() {
       message: 'Enter department id for new role'
     }
   ]).then((result, err) => {
-    db.query('INSERT INTO roles (title, salary, deparment_id) VALUES (?, ?, ?)', [result.title, result.salary, result.department_id] + `SELECT * FROM roles`)
+    db.query('INSERT INTO roles (title, salary, department_id) VALUES (?, ?, ?)', [result.title, result.salary, result.department_id])
     if (err) throw err;
-    console.table(result);
-  });
+    console.log('New Role Added!');
+    startPrompt();
+  })
 };
 
 // Add Department
@@ -180,52 +173,37 @@ function addDepartment() {
       name: 'department_name',
       message: 'Create new Department'
     }
-  ]).then((answer) => {
-    db.query(`INSERT INTO department (department_name) VALUES ("${answer.department_name}");`,
-    (err) => {
-      if(err) return err;
-      console.log('New Department Added!');
-      startPrompt();
-    
-  });
-});
-};
-
-// Update Employee Role
-function updateEmployeeRole() {
-
-}
-
-// view All Departments
-function viewEmployeesByDepartment() {
-  db.connect(function (err) {
+  ]).then((result, err) => {
+    db.query('INSERT INTO department (department_name) VALUES (?)', [result.department_name])
     if (err) throw err;
-    db.query("SELECT * FROM department", function (err, result) {
-      if (err) throw err;
-      console.table(result);
-      startPrompt();
-    });
-  });
+    console.log('New Department Added!');
+    startPrompt();
+  })
 };
 
-// Delete Employee
-function deleteEmployee() {
+// // Update Employee Role
+// function updateEmployeeRole() {
+ 
+// };
 
-}
+// // Delete Employee
+// function deleteEmployee() {
+ 
+// }
 
-// Delete Role
-function deleteRole() {
+// // Delete Role
+// function deleteRole() {
 
-}
+// }
 
-// Delete Department
-function deleteDempartment() {
+// // Delete Department
+// function deleteDempartment() {
 
-}
+// }
 
 // Quit
 function quit() {
-
+db.end();
 }
 
 // Default response for any other request (Not Found)

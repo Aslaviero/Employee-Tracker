@@ -51,3 +51,13 @@ Email me with questions at Tonyslaviero@gmail.com
 
 ## Video of project:
 Link to video demo:
+
+## Future ideas:
+- Be able to update roles, employees, and departments
+- Be able to remove roles, employees, and departments
+  
+## Screenshots 
+
+
+## Video
+https://drive.google.com/file/d/1UnGsbajGACBzHJvcQ-MPxRVojpiF2Rmz/view
