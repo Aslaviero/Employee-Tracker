@@ -1,9 +1,18 @@
 # Employee-Tracker
 ## Table of Contents
-- [Usage](#usage)
-- [Installation](#installation)
-- [Contribution](#contribution)
-- [Questions](#questions)
+- [Employee-Tracker](#employee-tracker)
+  - [Table of Contents](#table-of-contents)
+  - [SQL Challenge: Employee Tracker](#sql-challenge-employee-tracker)
+  - [User Story](#user-story)
+  - [Acceptance Criteria](#acceptance-criteria)
+  - [Usage:](#usage)
+  - [Installation:](#installation)
+  - [Contribution:](#contribution)
+  - [Questions:](#questions)
+  - [Video of project:](#video-of-project)
+  - [Future ideas:](#future-ideas)
+  - [Screenshots](#screenshots)
+  - [Video](#video)
 
 
 ## SQL Challenge: Employee Tracker
@@ -54,7 +63,7 @@ Link to video demo:
 
 ## Future ideas:
 - Be able to update roles, employees, and departments
-- Be able to remove roles, employees, and departments
+
   
 ## Screenshots 
 
