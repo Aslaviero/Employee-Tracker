@@ -66,6 +66,14 @@ Link to video demo:
 
   
 ## Screenshots 
+<img src="https://github.com/Aslaviero/Employee-Tracker/blob/main/Screen%20Shot%202022-12-05%20at%207.06.36%20PM.png">
+<img src="https://github.com/Aslaviero/Employee-Tracker/blob/main/Screen%20Shot%202022-12-05%20at%207.07.45%20PM.png">
+<img src="https://github.com/Aslaviero/Employee-Tracker/blob/main/Screen%20Shot%202022-12-05%20at%207.08.08%20PM.png">
+<img src="https://github.com/Aslaviero/Employee-Tracker/blob/main/Screen%20Shot%202022-12-05%20at%207.08.49%20PM.png">
+<img src="https://github.com/Aslaviero/Employee-Tracker/blob/main/Screen%20Shot%202022-12-05%20at%207.09.20%20PM.png">
+<img src="https://github.com/Aslaviero/Employee-Tracker/blob/main/Screen%20Shot%202022-12-05%20at%207.09.43%20PM.png">
+<img src="https://github.com/Aslaviero/Employee-Tracker/blob/main/Screen%20Shot%202022-12-05%20at%207.10.30%20PM.png">
+<img src="https://github.com/Aslaviero/Employee-Tracker/blob/main/Screen%20Shot%202022-12-05%20at%207.10.57%20PM.png">
 
 
 ## Video

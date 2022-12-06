@@ -33,22 +33,16 @@ db.connect(err => {
 
 
 
-<<<<<<< HEAD
 //Main menu that you first see when start up the program
 function startPrompt() {
   inquirer.prompt(
-=======
-//Main menu that you first see when doing node server.js
-function mainMenuPrompt() {
-  inquirer.prompt([
->>>>>>> 090beeb78e61838c8e2e23e23931a0217cb9791f
     {
       type: 'list',
       name: 'mainMenu',
       message: 'What would you like to do?',
       choices: ['View All Employees', 'Add Employee', 'Update Employee Role', 'View All Roles', 'Add Role', 'View All Departments', 'Add Department', 'Delete Employee', 'Delete Role', 'Delete Department', 'Quit']
     }
-  ]).then((answers) => {
+  ).then((answers) => {
     switch (answers.Mainmenu) {
       case 'View All Employees':
         viewAllEmployees();
@@ -88,15 +82,8 @@ function mainMenuPrompt() {
 };
 
 // View All Employees
-<<<<<<< HEAD
  viewAllEmployees = () => {
     db.query("SELECT * FROM employee", (err, result) => {
-=======
-viewAllEmployees = () => {
-  db.connect(function (err) {
-    if (err) throw err;
-    db.query("SELECT * FROM employee", function (err, result) {
->>>>>>> 090beeb78e61838c8e2e23e23931a0217cb9791f
       if (err) throw err;
       console.table(result);
       startPrompt();
@@ -187,55 +174,15 @@ function addDepartment() {
       name: 'department_name',
       message: 'Create new Department'
     }
-<<<<<<< HEAD
   ]).then((result, err) => {
     db.query('INSERT INTO department (department_name) VALUES (?)', [result.department_name])
-=======
-  ]).then((answer) => {
-    db.query(`INSERT INTO department (department_name) VALUES ("${answer.department_name}");`,
-      (err) => {
-        if (err) return err;
-        console.log('New Department Added!');
-        startPrompt();
-
-      });
-  });
-};
-
-// Update Employee Role
-function updateEmployeeRole() {
-
-}
-
-// view All Departments
-function viewEmployeesByDepartment() {
-  db.connect(function (err) {
->>>>>>> 090beeb78e61838c8e2e23e23931a0217cb9791f
     if (err) throw err;
     console.log('New Department Added!');
     startPrompt();
   })
 };
 
-// // Update Employee Role
-// function updateEmployeeRole() {
- 
-// };
 
-// // Delete Employee
-// function deleteEmployee() {
- 
-// }
-
-// // Delete Role
-// function deleteRole() {
-
-// }
-
-// // Delete Department
-// function deleteDempartment() {
-
-// }
 
 // Quit
 function quit() {
